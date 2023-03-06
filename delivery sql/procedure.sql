@@ -1,6 +1,11 @@
 use tablet
 
 
+ go
+ create procedure ComeOfAge as
+ select [nameclient], [age] from [client]
+ where [age]>=18
+
 go
 create procedure statusOfClients as
 select [client].[id], [client].[NameClient], [status].[NameStatus] 
@@ -30,7 +35,6 @@ from [order]
  inner join [status] on [client].[Id_status] = [status].[Id]
 
 
-go
-create procedure AmountOfRedemption as
-select sum([TotalPrice]) as [AmountOfRedemption] from [order]
+
+
  

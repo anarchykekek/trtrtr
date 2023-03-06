@@ -1,6 +1,7 @@
 use tablet
 
 
+
 select * from [client]
 select * from [status]
 select * from [order]
@@ -16,6 +17,11 @@ insert [client] values
 
 select [nameclient], [age], [age]*[id] as chch from [client]
 where [address] = 'a'
+
+
+
+select [nameclient], [age] from [client]
+where [age]>=18
 
 
 select * from [client], [status]
@@ -36,7 +42,10 @@ insert [order] values
 (8, 2, '20220217', 2890)
 
 
-select sum([TotalPrice]) as [AmountOfRedemption] from [order] 
+select [nameclient], sum([TotalPrice]) as [AmountOfRedemption]
+from [client] 
+inner join [client].[NameClient] on [order].[Id_client] = [client].[Id]
+
 
 select [worker].[NameWorker], sum ( [service].[Price] ) as [summa]
 from [service]
@@ -51,7 +60,7 @@ inner join [worker] on [service].[Id_worker] = [worker].[Id]
 
 use tablet
 
-exec AmountOfRedemption
+exec ComeOfAge
 
 exec ClientsSale
 
